@@ -9,17 +9,27 @@
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 <body>
-        <div>
-            <h1><a href="/">Diversity Policy</a></h1>
+        <div id="banner">
+            <div id="banner_title">
+                <h1><a id="site_head" href="/">Diversity Policy</a></h1>
+            </div>
+            <div id="banner_links">
+                <h5><a href="/">Contribute</a></h5>
+                <h5><a href="/">About</a></h5>
+            </div>
         </div>
 
-
-        {% for post in posts %}
-        <div>
-            <h2><a href="">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-            <p>published: {{ post.published_date }}</p>
+        <div id="content_div">
+            <div id="post_container">
+            {% for post in posts %}
+            <div class="blog_post">
+                <h2><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+                <p>published: {{ post.published_date }}</p>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        </div>
+
 </body>
 </html>
