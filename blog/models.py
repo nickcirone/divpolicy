@@ -48,7 +48,7 @@ class Policy(models.Model):
     longitude = models.FloatField()
     link = models.URLField()
     published_date = models.DateField(blank=True)
-    tags = models.CharField(choices=POSSIBLE_TAGS)
+    tags = models.CharField(choices=POSSIBLE_TAGS, max_length=50)
     abstract = models.TextField(blank=True)
     text = models.TextField()
 
