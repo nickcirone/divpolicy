@@ -25,8 +25,10 @@ SECRET_KEY = 'seq5*nc-h#yrb4q-14h^fegrd_bx@v#(l#a^!%h(4s8f05kjrw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'localhost']
-
+# Experimenting here
+# ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'https://gentle-fortress-35075.herokuapp.com/', 'localhost']
+# ALLOWED_HOSTS = [‘0.0.0.0’, ‘localhost’]
 
 # Application definition
 
@@ -71,15 +73,61 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
+# from django.core.exceptions import ImproperlyConfigured
+ 
+# def get_env_variable(var_name):
+#     try:
+#         return os.environ[var_name]
+#     except KeyError:
+#         error_msg = "Set the %s environment variable" % var_name
+#         raise ImproperlyConfigured(error_msg)
+
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+# one for development (maybe move that to local postgres) and another for running and development
 DATABASES = {
+    
+    # DISCARD!!!!
+    # --------------------------------
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': get_env_variable('DATABASE_NAME'),
+    #     'USER': get_env_variable('DATABASE_USER'),
+    #     'PASSWORD': get_env_variable('DATABASE_PASSWORD'),
+    #     'HOST': '',
+    #     'PORT': '',
+    # }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'db_name',                      
+    #     'USER': 'db_user',
+    #     'PASSWORD': 'db_user_password',
+    #     'HOST': '',
+    #     'PORT': 'db_port_number',
+    # }
+    # -------------------------------
+
+    # This is local 
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sample_database',
+        'USER': 'sample_user',
+        'PASSWORD': 'sample_password',
+        'HOST':'localhost',
+        'PORT':'5432',
     }
+
+    # This is online
 }
+
 
 
 # Password validation
