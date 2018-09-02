@@ -116,16 +116,26 @@ DATABASES = {
     # -------------------------------
 
     # This is local 
+    #  'default': {
+    #      'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #      'NAME': 'sample_database',
+    #      'USER': 'sample_user',
+    #      'PASSWORD': 'sample_password',
+    #      'HOST':'localhost',
+    #      'PORT':'5432',
+    #  }
+
+    # Testing database hosted at elephantsql
+
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sample_database',
-        'USER': 'sample_user',
-        'PASSWORD': 'sample_password',
-        'HOST':'localhost',
-        'PORT':'5432',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'xsboediz',
+        'USER': 'xsboediz',
+        'PASSWORD': '',
+        'HOST': 'baasu.db.elephantsql.com',
+        'PORT': '5432'
     }
 
-    # This is online
 }
 
 

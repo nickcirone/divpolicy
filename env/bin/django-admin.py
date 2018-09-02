@@ -1,4 +1,4 @@
-#!/Users/ncirone/Desktop/brandonproj/divpolicy/env/bin/python3
+#!/Users/ncirone/Desktop/brandonproj/divpolicy/env/bin/python
 from django.core import management
 
 if __name__ == "__main__":
