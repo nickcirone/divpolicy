@@ -166,7 +166,7 @@
       <path value="$PROJECT_DIR$/env/share/jupyter/lab/themes/@jupyterlab/theme-light-extension/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="y" value="23" />
     <option name="width" value="931" />
     <option name="height" value="728" />
