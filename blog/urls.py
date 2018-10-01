@@ -1,7 +1,8 @@
-from django.conf.urls import url
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.post_list, name='post_list'),
+    path('', views.search_home, name='index_view'),
+    path('policy/', views.policy_search, name='policy-search'),
 ]
 

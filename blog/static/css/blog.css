@@ -9,7 +9,7 @@ body {
     align-items: center;
 }
 
-#post_container {
+#policy_container {
     width: 80%;
     height: 80%;
     display: flex;
@@ -40,6 +40,14 @@ body {
     color: #fffee8;
 }
 
+#searchbar {
+    color: #fffee8;
+}
+
+#searchbar_text {
+    color: #fffee8;
+}
+
 #banner_links {
     padding-right: 5%;
     display: flex;
@@ -51,12 +59,16 @@ body {
     color: #fffee8;
 }
 
-.blog_post {
+h3.school_name {
+    color: #fffee8;
+}
+
+.policy_post {
     padding-top: 20px;
     padding-left: 24px;
     padding-right: 24px;
 }
 
-.blog_post h2 a {
+.policy_post h2 a {
     color: rgb(213, 212, 214);
 }

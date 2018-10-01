@@ -1,23 +1,9 @@
 from django.db import models
 from django.utils import timezone
-
-
-class Post(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(
-            default=timezone.now)
-    published_date = models.DateTimeField(
-            blank=True, null=True)
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
-
-    def __str__(self):
-        return self.title
-
+from django.contrib.auth.models import User
+from .search import PolicyIndex
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Policy(models.Model):
 
@@ -37,20 +23,42 @@ class Policy(models.Model):
         ('accreditation', 'Accreditation')
     )
 
-    title = models.CharField(max_length=300)
-    school = models.CharField(max_length=300)
-    department = models.CharField(max_length=300, blank=True)
-    administrator = models.CharField(max_length=300, blank=True)
-    author = models.CharField(max_length=300, blank=True)
-    state = models.CharField(max_length=50)
-    city = models.CharField(max_length=50)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
-    link = models.URLField()
-    published_date = models.DateField(blank=True)
-    tags = models.CharField(choices=POSSIBLE_TAGS, max_length=50)
+    title = models.TextField(blank=True)
+    school = models.CharField(max_length=255)
+    department = models.TextField(blank=True)
+    administrator = models.TextField(blank=True)
+    author = models.TextField(blank=True)
+    state = models.TextField(blank=True)
+    city = models.TextField(blank=True)
+    latitude = models.CharField(max_length=255)
+    longitude = models.CharField(max_length=255)
+    link = models.TextField(blank=True)
+    published_date = models.DateField(blank=True, null=True)
+    tags = models.CharField(choices=POSSIBLE_TAGS, max_length=255)
     abstract = models.TextField(blank=True)
-    text = models.TextField()
+    text = models.TextField(blank=True)
+
+    # Add indexing method to Policy
+    def indexing(self):
+        obj = PolicyIndex(
+            meta={'id': self.id},
+            title = self.title,
+            school = self.school,
+            department = self.department,
+            administrator = self.administrator,
+            author = self.author,
+            state = self.state,
+            city = self.city,
+            latitude = self.latitude,
+            longitude = self.longitude,
+            link = self.link,
+            published_date = self.published_date,
+            tags = self.tags,
+            abstract = self.abstract,
+            text = self.text
+        )
+        obj.save(index='policy-index')
+        return obj.to_dict(include_meta=True)
 
     def publish(self):
         self.save()

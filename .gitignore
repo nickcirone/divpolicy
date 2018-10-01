@@ -1,5 +1,7 @@
 *.pyc
 *~
+.vscode
+.idea
 env
 __pycache__x
 db.sqlite3

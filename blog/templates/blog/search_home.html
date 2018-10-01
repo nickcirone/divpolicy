@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Policy List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <div id="banner">
+            <div id="banner_title">
+                <h1><a id="site_head" href="/">Diversity Policy</a></h1>
+            </div>
+            <div id="banner_links">
+                <h5><a href="/">Search</a></h5>
+                <h5><a href="/">Contribute</a></h5>
+                <h5><a href="/">About</a></h5>
+            </div>
+        </div>
+
+        <div id="content_div">
+            <form action="policy/" method="GET" id="searchbar">
+                <input type="text" name="search" id="searchbar_text" placeholder="Search Here!">
+                <input id="searchbar_button" type="submit" value="Go!">
+            </form>
+        </div>
+        </div>
+
+</body>
+</html>
