@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -22,16 +23,12 @@
         </div>
 
         <div id="content_div">
-            <div id="policy_container">
-            {% for hit in policies %}
-                <div class="policy_post">
-                    <h2><a href="">{{ hit.name }}</a></h2>
-                    <h3 class="school_name">{{ hit.school }}</h3>
-                </div>
-            {% endfor %}
-            </div>
+            <form action="policy/" method="GET" id="searchbar">
+                <input type="text" name="search" id="searchbar_text" placeholder="Search Here!">
+                <input id="searchbar_button" type="submit" value="Go!">
+            </form>
+        </div>
         </div>
 
 </body>
 </html>
-

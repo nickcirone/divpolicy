@@ -43,7 +43,7 @@ def bulk_indexing():
         blog = models.Policy.objects.get_or_create(title=row[1], school=row[2], department=row[3], administrator=row[4], author=row[5], state=row[6], city=row[7], latitude=row[8], longitude=row[9], link=row[10], published_date=row[11], tags=row[12], abstract=row[13], text=row[14])[0]
         pass
 
-def search(date):
-    s = Search().filter('match_phrase', school=date)
+def search(term):
+    s = Search().filter('match_phrase', school=term)
     response = s.execute()
     return response
