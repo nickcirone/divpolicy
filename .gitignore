@@ -1,5 +1,6 @@
 *.pyc
 *~
+.vscode
 .idea
 env
 __pycache__x

@@ -18,6 +18,3 @@ def policy_search(request):
     print(policies)
     return render(request, 'blog/policy_list.html', {'policies': policies})
 
-def policy_list(request):
-    policies = Policy.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/policy_list.html')
