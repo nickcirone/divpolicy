@@ -22,12 +22,21 @@
         </div>
 
         <div id="content_div">
+            <form action="policy/" method="GET" id="searchbar">
+                <input type="text" name="search" id="searchbar_text" placeholder="Search Here!">
+                <input id="searchbar_button" type="submit" value="Go!">
+            </form>
             <div id="policy_container">
             {% for hit in policies %}
+                {% if forloop.counter0 < 10 %}
                 <div class="policy_post">
-                    <h2><a href="">{{ hit.name }}</a></h2>
+                    <h2><a href="{{ hit.link }}">{{ hit.title }}</a></h2>
                     <h3 class="school_name">{{ hit.school }}</h3>
+                    <p class="abstract">{{ hit.abstract }}</p>
                 </div>
+                {% else %}
+
+                {% endif %}
             {% endfor %}
             </div>
         </div>

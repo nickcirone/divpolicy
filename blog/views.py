@@ -15,6 +15,6 @@ def policy_search(request):
     print("Trying to search")
     term = request.GET.get('search')
     policies = search(term)
-    print(policies)
+    ## print(policies)
     return render(request, 'blog/policy_list.html', {'policies': policies})
 
