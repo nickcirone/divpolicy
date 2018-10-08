@@ -1,5 +1,6 @@
 from elasticsearch_dsl.connections import connections
 from elasticsearch_dsl import DocType, Text, Date, Search
+from elasticsearch_dsl.query import MultiMatch, Match
 from elasticsearch.helpers import bulk
 from elasticsearch import Elasticsearch
 from . import models
@@ -43,7 +44,8 @@ def bulk_indexing():
         blog = models.Policy.objects.get_or_create(title=row[1], school=row[2], department=row[3], administrator=row[4], author=row[5], state=row[6], city=row[7], latitude=row[8], longitude=row[9], link=row[10], published_date=row[11], tags=row[12], abstract=row[13], text=row[14])[0]
         pass
 
-def search(term):
-    s = Search().filter('match_phrase', school=term)
+def search(query):
+    #search over all of the fields except for date because the type is different and we are searching with a string -- fix this later
+    s = Search(index='policy-index').query("multi_match", query=query, fields=["title", "school", "department", "administrator", "author", "state", "city", "latitude", "longitude", "link", "tags", "abstract", "text"])
     response = s.execute()
     return response
