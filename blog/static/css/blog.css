@@ -10,13 +10,13 @@ body {
 }
 
 #policy_container {
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     border-radius: 20px;
-    background-color: #a4a4a4;
+    background-color: #ffffff;
     padding-bottom: 25px;
 }
 
@@ -40,12 +40,12 @@ body {
     color: #fffee8;
 }
 
-#searchbar {
-    color: #fffee8;
+form.searchbar {
+    color: #000000;
 }
 
-#searchbar_text {
-    color: #fffee8;
+input.searchbar_text {
+    color: #000000;
 }
 
 #banner_links {
@@ -60,7 +60,11 @@ body {
 }
 
 h3.school_name {
-    color: #fffee8;
+    color: #000000;
+}
+
+h6.policy_index_id {
+    color: #000000;
 }
 
 .policy_post {
@@ -70,5 +74,5 @@ h3.school_name {
 }
 
 .policy_post h2 a {
-    color: rgb(213, 212, 214);
+    color: #4286f4;
 }
