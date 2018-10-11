@@ -25,6 +25,8 @@ class PolicyIndex(DocType):
     abstract = Text()
     text = Text()
 
+#if bulk_indexing() doesn't work due to space, try running
+#curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
 
 def bulk_indexing():
     PolicyIndex.init(index='policy-index')
@@ -39,8 +41,13 @@ def bulk_indexing():
         #handling of improperly formatted date entries
         row[11] = "1111-11-11"
         # handling of weird characters appearing in lat and long entries
-        row[8] = float(row[8][:2])
-        row[9] = float(row[9][:2])
+        #print(row[8][:2], row[9][:2])
+        try:
+            row[8] = float(row[8][:2])
+            row[9] = float(row[9][:2])
+        except:
+            row[8] = ""
+            row[9] = ""
         blog = models.Policy.objects.get_or_create(title=row[1], school=row[2], department=row[3], administrator=row[4], author=row[5], state=row[6], city=row[7], latitude=row[8], longitude=row[9], link=row[10], published_date=row[11], tags=row[12], abstract=row[13], text=row[14])[0]
         pass
 
