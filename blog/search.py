@@ -86,3 +86,13 @@ def get_search_suggestions(query):
     suggestions = [suggest['text'] for suggest in suggestions]
     print(suggestions)
     return suggestions
+
+# going to output a list of objects that represent suggestions based off what has been currently entered to search
+# by the user -- can be used for search suggestion
+# similar to search(), this method will be used in views.py or a similar file that interacts with the html
+
+def get_search_suggestions(query):
+    es = Search(index = 'policy-index')
+    suggestions = es.suggest('policy_index', query, term = {"field": "title"})
+    response = suggestions.execute()
+    return response.suggest.policy_index
