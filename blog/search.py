@@ -95,4 +95,11 @@ def get_search_suggestions(query):
     es = Search(index = 'policy-index')
     suggestions = es.suggest('policy_index', query, term = {"field": "title"})
     response = suggestions.execute()
-    return response.suggest.policy_index
+    top_suggestions = []
+    try:
+        for i in response.suggest.policy_index[0]["options"]:
+            top_suggestions.append(i["text"])
+    except:
+        pass
+# this is a list of all the best suggestions based on the input text, in order of score
+    return top_suggestions
