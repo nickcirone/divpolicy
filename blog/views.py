@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, JsonResponse
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from .models import Policy
@@ -20,9 +20,13 @@ def policy_search(request):
 # and policy_search, it works, so I'm not sure how to make it so that both functions will get called, not just the
 # first one. Could combine the two functions, but the issue is that series_autocomplete must be called as the user
 # is typing, while policy_search should only be called when the user clicks search.
+# request, 'blog/policy_list.html', 
 
 def series_autocomplete(request):
     term = request.GET.get('search')
+    print(term)
     suggestions = get_search_suggestions(term)
     print("Suggestions: ", suggestions)
-    return render(request, 'blog/policy_list.html', {'suggestions': suggestions})
+    return JsonResponse({'suggestions': suggestions})
+
+
