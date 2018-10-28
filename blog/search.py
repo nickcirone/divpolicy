@@ -80,17 +80,18 @@ def search(query):
 # similar to search(), this method will be used in views.py or a similar file that interacts with the html
 
 # currently returns an error
-def get_search_suggestions(query):
-    es = Search(index = 'policy_index')
-    suggestions = es.suggest(name = 'policy-index', text = {"title": query})[0]["options"]
-    suggestions = [suggest['text'] for suggest in suggestions]
-    print(suggestions)
-    return suggestions
+# def get_search_suggestions(query):
+#     es = Search(index = 'policy_index')
+#     suggestions = es.suggest(name = 'policy-index', text = {"title": query})[0]["options"]
+#     suggestions = [suggest['text'] for suggest in suggestions]
+#     print(suggestions)
+#     return suggestions
 
 # going to output a list of objects that represent suggestions based off what has been currently entered to search
 # by the user -- can be used for search suggestion
 # similar to search(), this method will be used in views.py or a similar file that interacts with the html
 
+# This is no longer being used with the 10/28 update
 def get_search_suggestions(query):
     es = Search(index = 'policy-index')
     suggestions = es.suggest('policy_index', query, term = {"field": "title"})
