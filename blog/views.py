@@ -35,13 +35,12 @@ def autocompleteModel(request):
         q = request.GET.get('search')
         search_qs = Policy.objects.filter(title__startswith=q)
         results = []
-        print(q)
         for r in search_qs:
             results.append(r.title)
         data = json.dumps(results)
     else:
         data = 'fail'
-    data = list(set([n.strip() for n in ast.literal_eval(data)]))[:10]
+    data = list(set([n.strip() for n in ast.literal_eval(data)]))
     mimetype = 'application/json'
     print("Suggestions: ", data)
     return HttpResponse(data, mimetype)

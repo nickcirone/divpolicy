@@ -56,7 +56,7 @@
         </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!--
+
     <script>
       $(document).ready(function() {
 
@@ -87,23 +87,22 @@
       });
 });
     </script>
--->
 
 <!--Attempt at new ajax script for the new function, found this online, not totally sure if it's right approach -->
-    <script>
-            $(document).ready(function(){
-                $("#txtSearch").autocomplete({
-                    source: "/ajax_calls/search/",
-                    minLength: 2,
-                    open: function(){
-                        setTimeout(function () {
-                            $('.ui-autocomplete').css('z-index', 99);
-                        }, 0);
-                    }
-                  });
+    <!--<script>-->
+            <!--$(document).ready(function(){-->
+                <!--$("#txtSearch").autocomplete({-->
+                    <!--source: "/ajax_calls/search/",-->
+                    <!--minLength: 2,-->
+                    <!--open: function(){-->
+                        <!--setTimeout(function () {-->
+                            <!--$('.ui-autocomplete').css('z-index', 99);-->
+                        <!--}, 0);-->
+                    <!--}-->
+                  <!--});-->
 
-            });
-    </script>
+            <!--});-->
+    <!--</script>-->
 
 </body>
 </html>
