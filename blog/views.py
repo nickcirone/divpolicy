@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpRequest, JsonResponse
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from .models import Policy
-from .search import search, get_search_suggestions
+from .search import search, search_suggest
 import json
 import ast
 
@@ -18,28 +18,23 @@ def policy_search(request):
     policies = search(term)
     return render(request, 'blog/policy_list.html', {'policies': policies})
 
-# Old autocomplete function using elasticsearch built-in functionality--somewhat works but not very robust
-# def series_autocomplete(request):
-#     term = request.GET.get('search')
-#     print(term)
-#     suggestions = get_search_suggestions(term)
-#     print("Suggestions: ", suggestions)
-#     return JsonResponse({'suggestions': suggestions})
 
-# New autocomplete--more robust, searches over title attribute data
+# Autocomplete function -- takes text as it is being typed into the search bar, runs a simple prefix search over
+# just the "title" field, and returns a list of the matches which will then be displayed as suggestions from the
+# search bar to the user
 
-# Problem is that it is currently case sensitive, so you need to type in same case as the actual policies that
-# will be suggested. Shouldn't be hard to fix this.
 def autocompleteModel(request):
     if request.is_ajax():
         q = request.GET.get('search')
-        search_qs = Policy.objects.filter(title__startswith=q)
+        search_qs = search_suggest(q)
         results = []
         for r in search_qs:
-            results.append(r.title)
+            results.append(r.title.lower())
         data = json.dumps(results)
     else:
         data = 'fail'
-    data = list(set([n.strip() for n in ast.literal_eval(data)]))
+    data = list(set([n.strip() for n in ast.literal_eval(data)]))[:10]
+    mimetype = 'application/json'
+    print("Text: ", q)
     print("Suggestions: ", data)
-    return JsonResponse({'suggestions': data})
+    return HttpResponse(data, mimetype)
