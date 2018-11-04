@@ -7,3 +7,10 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+.ui-menu .ui-menu-item a{
+    font-size: 10px;
+    color: #96f226;
+    border-radius: 0px;
+    border: 1px solid #454545;
+}

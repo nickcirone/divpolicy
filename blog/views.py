@@ -34,7 +34,6 @@ def autocompleteModel(request):
     else:
         data = 'fail'
     data = list(set([n.strip() for n in ast.literal_eval(data)]))[:10]
-    mimetype = 'application/json'
     print("Text: ", q)
     print("Suggestions: ", data)
-    return HttpResponse(data, mimetype)
+    return JsonResponse({ 'suggestions': data })
