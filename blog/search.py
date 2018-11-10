@@ -7,7 +7,13 @@ from . import models
 import csv
 from django.contrib.auth.models import User
 
-connections.create_connection()
+# This connections call should connect this to the elastic search cluster we have running on AWS via Elastic Cloud
+# I ran bulk_indexing() through a shell on it once and it seemed to have uploaded most if not all of our data
+# I don't think running bulk_indexing again would be needed since that data should reside in the cloud now, but I don't know
+connections.create_connection(hosts=["https://dd90577b842c4f9396ca1846612e98df.us-east-1.aws.found.io:9243"], http_auth=('elastic', 'Mq2jdfPLSRG1m8qxp4vd0qNa'))
+
+# This is the code to use if you are chosing to run elastic search on your local machine instead of in the cloud
+#connections.create_connection()
 
 class PolicyIndex(DocType):
     title = Text()
