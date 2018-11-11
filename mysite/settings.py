@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku 
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,9 +28,7 @@ SECRET_KEY = 'seq5*nc-h#yrb4q-14h^fegrd_bx@v#(l#a^!%h(4s8f05kjrw'
 DEBUG = True
 
 # Experimenting here
-# ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'localhost']
-ALLOWED_HOSTS = ['127.0.0.1', 'https://gentle-fortress-35075.herokuapp.com/', 'localhost']
-# ALLOWED_HOSTS = [‘0.0.0.0’, ‘localhost’]
+ALLOWED_HOSTS = [‘0.0.0.0’, ‘localhost’, 'https://stormy-stream-43261.herokuapp.com/']
 
 # Application definition
 
@@ -87,45 +87,6 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # one for development (maybe move that to local postgres) and another for running and development
 DATABASES = {
-    
-    # DISCARD!!!!
-    # --------------------------------
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
-
-
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': get_env_variable('DATABASE_NAME'),
-    #     'USER': get_env_variable('DATABASE_USER'),
-    #     'PASSWORD': get_env_variable('DATABASE_PASSWORD'),
-    #     'HOST': '',
-    #     'PORT': '',
-    # }
-
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'db_name',                      
-    #     'USER': 'db_user',
-    #     'PASSWORD': 'db_user_password',
-    #     'HOST': '',
-    #     'PORT': 'db_port_number',
-    # }
-    # -------------------------------
-
-    # This is local 
-    #  'default': {
-    #      'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #      'NAME': 'sample_database',
-    #      'USER': 'sample_user',
-    #      'PASSWORD': 'sample_password',
-    #      'HOST':'localhost',
-    #      'PORT':'5432',
-    #  }
-
-    # Testing database hosted at elephantsql
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -178,3 +139,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+django_heroku.settings(locals())
