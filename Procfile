@@ -1,1 +1,1 @@
-web: gunicorn divpolicy.wsgi
+web: gunicorn mysite.wsgi
