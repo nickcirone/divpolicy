@@ -14,6 +14,8 @@ import os
 import django_heroku 
 import dj_database_url
 
+config = dj_database_url.config
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -23,14 +25,11 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('seq5*nc-h#yrb4q-14h^fegrd_bx@v#(l#a^!%h(4s8f05kjrw')
-DEBUG = config('DEBUG', default=False, cast=bool)
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+SECRET_KEY = 'seq5*nc-h#yrb4q-14h^fegrd_bx@v#(l#a^!%h(4s8f05kjrw'
+DEBUG = True
 
 # Experimenting here
-ALLOWED_HOSTS = [‘0.0.0.0’, ‘localhost’, 'https://stormy-stream-43261.herokuapp.com/']
+ALLOWED_HOSTS = ["localhost", "https://stormy-stream-43261.herokuapp.com/"]
 
 # Application definition
 
