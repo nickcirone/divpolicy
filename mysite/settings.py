@@ -90,19 +90,19 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # one for development (maybe move that to local postgres) and another for running and development
 DATABASES = {
 
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'xsboediz',
-        'USER': 'xsboediz',
-        'PASSWORD': 'Qcn3tmpnSgp1QHgk_dsCvukFFPJAofm0',
-        'HOST': 'baasu.db.elephantsql.com',
-        'PORT': '5432'
-    }
+    # 'default': {
+    #    'ENGINE': 'django.db.backends.postgresql',
+    #    'NAME': 'xsboediz',
+    #    'USER': 'xsboediz',
+    #    'PASSWORD': 'Qcn3tmpnSgp1QHgk_dsCvukFFPJAofm0',
+    #    'HOST': 'baasu.db.elephantsql.com',
+    #    'PORT': '5432'
+    # }
 
     #
-    #   'default': dj_database_url.config(
-    #       default=config('DATABASE_URL')
-    #   )
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
     #
 }
 
