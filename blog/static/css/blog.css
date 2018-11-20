@@ -1,74 +1,16 @@
-body {
-    background-color: #4b4a49;
+.pagination>li:first-child>a, .pagination>li:first-child>span {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
-#content_div {
-    padding-top: 6%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.pagination>li:last-child>a, .pagination>li:last-child>span {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-#policy_container {
-    width: 80%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 20px;
-    background-color: #a4a4a4;
-    padding-bottom: 25px;
-}
-
-#banner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 100%;
-    height: 120px;
-    background-color: rgba(24, 11, 72, 0.72);
-}
-
-#banner_title {
-    padding-left: 5%;
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-#banner #site_head {
-    color: #fffee8;
-}
-
-#searchbar {
-    color: #fffee8;
-}
-
-#searchbar_text {
-    color: #fffee8;
-}
-
-#banner_links {
-    padding-right: 5%;
-    display: flex;
-    flex-direction: row;
-}
-
-#banner_links a {
-    padding: 10px;
-    color: #fffee8;
-}
-
-h3.school_name {
-    color: #fffee8;
-}
-
-.policy_post {
-    padding-top: 20px;
-    padding-left: 24px;
-    padding-right: 24px;
-}
-
-.policy_post h2 a {
-    color: rgb(213, 212, 214);
+.ui-menu .ui-menu-item a{
+    font-size: 10px;
+    color: #96f226;
+    border-radius: 0px;
+    border: 1px solid #454545;
 }
