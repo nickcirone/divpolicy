@@ -11,9 +11,14 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku 
+import dj_database_url
+
+config = dj_database_url.config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -21,14 +26,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'seq5*nc-h#yrb4q-14h^fegrd_bx@v#(l#a^!%h(4s8f05kjrw'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 # Experimenting here
-# ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'localhost']
-ALLOWED_HOSTS = ['127.0.0.1', 'https://gentle-fortress-35075.herokuapp.com/', 'localhost']
-# ALLOWED_HOSTS = [‘0.0.0.0’, ‘localhost’]
+ALLOWED_HOSTS = ["localhost", "https://stormy-stream-43261.herokuapp.com/"]
 
 # Application definition
 
@@ -87,55 +88,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # one for development (maybe move that to local postgres) and another for running and development
 DATABASES = {
-    
-    # DISCARD!!!!
-    # --------------------------------
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
-
 
     # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': get_env_variable('DATABASE_NAME'),
-    #     'USER': get_env_variable('DATABASE_USER'),
-    #     'PASSWORD': get_env_variable('DATABASE_PASSWORD'),
-    #     'HOST': '',
-    #     'PORT': '',
+    #    'ENGINE': 'django.db.backends.postgresql',
+    #    'NAME': 'xsboediz',
+    #    'USER': 'xsboediz',
+    #    'PASSWORD': 'Qcn3tmpnSgp1QHgk_dsCvukFFPJAofm0',
+    #    'HOST': 'baasu.db.elephantsql.com',
+    #    'PORT': '5432'
     # }
 
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'db_name',                      
-    #     'USER': 'db_user',
-    #     'PASSWORD': 'db_user_password',
-    #     'HOST': '',
-    #     'PORT': 'db_port_number',
-    # }
-    # -------------------------------
-
-    # This is local 
-    #  'default': {
-    #      'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #      'NAME': 'sample_database',
-    #      'USER': 'sample_user',
-    #      'PASSWORD': 'sample_password',
-    #      'HOST':'localhost',
-    #      'PORT':'5432',
-    #  }
-
-    # Testing database hosted at elephantsql
-
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'xsboediz',
-        'USER': 'xsboediz',
-        'PASSWORD': 'Qcn3tmpnSgp1QHgk_dsCvukFFPJAofm0',
-        'HOST': 'baasu.db.elephantsql.com',
-        'PORT': '5432'
-    }
-
+    #
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+    #
 }
 
 
@@ -176,5 +143,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATIC_URL = 'blog/static/'
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+django_heroku.settings(locals())
