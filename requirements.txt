@@ -8,18 +8,6 @@ chardet==3.0.4
 cryptography==2.2.2
 cycler==0.10.0
 dj-database-url==0.5.0
-<<<<<<< HEAD
-Django==2.1.1
-django-heroku==0.3.1
-elasticsearch==6.3.1
-elasticsearch-dsl==6.2.1
-gast==0.2.0
-googletrans==2.3.0
-grpcio==1.11.0
-html5lib==0.9999999
-idna==2.6
-ipaddress==1.0.22
-=======
 dj-static==0.0.6
 Django==2.1.2
 django-configurations==2.0
@@ -65,18 +53,11 @@ jupyter-console==5.2.0
 jupyter-core==4.4.0
 jupyterlab==0.32.1
 jupyterlab-launcher==0.10.5
->>>>>>> 0a47ae2b29f81afd288cac5b26f2b1b18ab30278
 kiwisolver==1.0.1
 Markdown==2.6.11
 matplotlib==2.2.2
 mod-wsgi==4.6.5
 numpy==1.14.3
-<<<<<<< HEAD
-oauthlib==2.1.0
-protobuf==3.5.2.post1
-psycopg2==2.7.5
-py-translate==1.0.3
-=======
 numpydoc==0.8.0
 olefile==0.45.1
 openpyxl==2.5.3
@@ -107,14 +88,10 @@ pur==5.0.0
 py==1.5.3
 pycodestyle==2.4.0
 pycosat==0.6.3
->>>>>>> 0a47ae2b29f81afd288cac5b26f2b1b18ab30278
 pycparser==2.18
 pyOpenSSL==17.5.0
 pyparsing==2.2.0
 PySocks==1.6.8
-<<<<<<< HEAD
-python-dateutil==2.7.2
-=======
 pytest==3.5.1
 pytest-arraydiff==0.2
 pytest-astropy==0.3.0
@@ -123,7 +100,6 @@ pytest-openfiles==0.3.0
 pytest-remotedata==0.2.1
 python-dateutil==2.7.3
 python-decouple==3.1
->>>>>>> 0a47ae2b29f81afd288cac5b26f2b1b18ab30278
 pytz==2018.4
 requests==2.19.1
 requests-oauthlib==1.0.0
@@ -135,9 +111,6 @@ tweepy==3.6.0
 urllib3==1.22
 virtualenv==15.2.0
 Werkzeug==0.14.1
-<<<<<<< HEAD
-whitenoise==4.1
-=======
 whitenoise==3.3.1
 widgetsnbextension==3.2.1
 wrapt==1.10.11
@@ -145,4 +118,3 @@ xlrd==1.1.0
 XlsxWriter==1.0.4
 xlwt==1.2.0
 zict==0.1.3
->>>>>>> 0a47ae2b29f81afd288cac5b26f2b1b18ab30278
