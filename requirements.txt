@@ -56,7 +56,6 @@ jupyterlab-launcher==0.10.5
 kiwisolver==1.0.1
 Markdown==2.6.11
 matplotlib==2.2.2
-mod-wsgi==4.6.5
 numpy==1.14.3
 numpydoc==0.8.0
 olefile==0.45.1
