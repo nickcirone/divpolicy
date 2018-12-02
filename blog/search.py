@@ -1,5 +1,5 @@
 from elasticsearch_dsl.connections import connections
-from elasticsearch_dsl import DocType, Text, Date, Search
+from elasticsearch_dsl import DocType, Text, Date, Search, Integer, Completion, analyzer, tokenizer, Object, Q
 from elasticsearch_dsl.query import MultiMatch, Match
 from elasticsearch.helpers import bulk
 from elasticsearch import Elasticsearch
@@ -15,7 +15,10 @@ connections.create_connection(hosts=["https://dd90577b842c4f9396ca1846612e98df.u
 # This is the code to use if you are chosing to run elastic search on your local machine instead of in the cloud
 #connections.create_connection()
 
+#my_analyzer = analyzer('my_analyzer', tokenizer=tokenizer('trigram', 'edge_gram', min_gram=1, max_gram=20), filter=['lowercase'])
+
 class PolicyIndex(DocType):
+
     title = Text()
     school = Text()
     department = Text()
@@ -35,8 +38,8 @@ class PolicyIndex(DocType):
 # curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
 
 def bulk_indexing():
-    PolicyIndex.init(index='policy-index')
     es = Elasticsearch()
+    PolicyIndex.init(index='policy-index')
     bulk(client=es, actions=(b.indexing() for b in models.Policy.objects.all().iterator()))
     # code to go into the csv file of data and add it to elasticsearch
     f = open('policy.csv', encoding="ISO-8859-1")
@@ -77,7 +80,7 @@ def bulk_indexing():
 def search(query):
     s = Search(index ='policy-index').query("multi_match", query=query,
                                            fields=["title", "school", "department", "administrator", "author", "state",
-                                                   "city", "latitude", "longitude", "link", "tags", "abstract", "text"])
+                                                   "city", "latitude", "longitude", "link", "tags", "abstract", "text"], fuzziness = "AUTO")
     response = s.execute()
     return response
 
