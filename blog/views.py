@@ -36,34 +36,26 @@ def autocompleteModel(request):
     data = list(set([n.strip() for n in ast.literal_eval(data)]))[:10]
     print("Text: ", q)
     query_length = len(q)
-    #print("Suggestions: ", data)
+    print("Suggestions: ", data)
 
     # check for 'part' and numbers and maybe skip over ones with commas and limit the length of suggestions
     for i in range(len(data)):
         new_list = data[i].split(" ")
-        print(query_length, len(new_list))
         if query_length < 3:
             #Allow suggestions up to length 2
             if len(new_list) > 2:
-                print("Too long", data[i])
                 data[i] = ""
                 continue
         elif query_length >= 3 and query_length <= 10:
             #Allow suggestions up to length 6
             if len(new_list) > 8:
-                print("Too long", data[i])
                 data[i] = ""
                 continue
         else:
             #Allow suggestions up to length 9
             if len(new_list) > 11:
-                print("Too long", data[i])
                 data[i] = ""
                 continue
-        if len(new_list) > query_length + 5:
-            print("Too long", data[i])
-            data[i] = ""
-            continue
         for j in range(len(new_list)):
             if new_list[j] == "part":
                 data[i] = " ".join(new_list[:j])

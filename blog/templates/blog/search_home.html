@@ -29,10 +29,12 @@
                   <a class="nav-link disabled" href="/">About</a>
                 </li>
               </ul>
+                <!--
               <form action="policy/" method="GET" class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" id="s_bar1" name="search" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
               </form>
+              -->
             </div>
         </nav>
         <div class="jumbotron jumbotron-fluid text-center">
@@ -41,7 +43,7 @@
             <h2>Search Policy from Hundreds of Universities</h2>
             <br>
             <form action="policy/" method="GET" class="form-inline justify-content-center">
-                <input type="text" id="s_bar2" name="search" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+                <input type="text" id="s_bar2" name="search" size = "75" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
                 <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="Search">
             </form>
             <br>
@@ -106,22 +108,6 @@
       });
     });
     </script>
-
-<!--Attempt at new ajax script for the new function, found this online, not totally sure if it's right approach -->
-    <!--<script>-->
-            <!--$(document).ready(function(){-->
-                <!--$("#txtSearch").autocomplete({-->
-                    <!--source: "/ajax_calls/search/",-->
-                    <!--minLength: 2,-->
-                    <!--open: function(){-->
-                        <!--setTimeout(function () {-->
-                            <!--$('.ui-autocomplete').css('z-index', 99);-->
-                        <!--}, 0);-->
-                    <!--}-->
-                  <!--});-->
-
-            <!--});-->
-    <!--</script>-->
 
 </body>
 </html>
