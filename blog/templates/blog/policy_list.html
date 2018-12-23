@@ -35,11 +35,13 @@
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                   </form> -->
 
-                    <form action="" method="GET" class="form-inline my-2 my-lg-0">
-                <input type="text" id="s_bar" name="search" size = "75" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+            <br>
+            <form action="policy/" method="GET" class="form-inline justify-content-center">
+                <input type="text" id="s_bar2" name="search" size = "75" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
                 <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="Search">
-                    </form>
-
+            </form>
+            <br>
+            <br>
                 </div>
         </nav>
         <div class="container-fluid">
@@ -77,7 +79,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-<script>
+        <script>
       $(document).ready(function() {
 
       var timeoutID = null;
@@ -86,8 +88,8 @@
         console.log('search: ' + str);
       }
 
-      $('#s_bar').keyup(function(err) {
-        var query = $("#s_bar").val();
+      $('#s_bar2').keyup(function(err) {
+        var query = $("#s_bar2").val();
         clearTimeout(timeoutID);
         $.ajax({
         url: "/policy_suggest/?search=" + query,
@@ -97,13 +99,14 @@
             //console.log(res);
             var tags = res.suggestions;
             console.log(tags);
-            $( "#s_bar" ).autocomplete({
+            $( "#s_bar2" ).autocomplete({
                 source: tags
             });
-        }
+          }
         });
         //console.log("handler function called! Data: " + query);
       });
+    });
     </script>
 </body>
 </html>
