@@ -43,7 +43,7 @@ def autocompleteModel(request):
         new_list = data[i].split(" ")
         if query_length < 3:
             #Allow suggestions up to length 2
-            if len(new_list) > 2:
+            if len(new_list) > 1:
                 data[i] = ""
                 continue
         elif query_length >= 3 and query_length <= 10:
